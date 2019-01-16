@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="club.sigapp.safewalk.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_mainStudentFragment"
+            app:destination="@+id/mainStudentFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_loginGuestFragment"
+            app:destination="@id/loginGuestFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainPoliceFragment"
+            app:destination="@id/mainPoliceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainStudentFragment"
+        android:name="club.sigapp.safewalk.MainStudentFragment"
+        android:label="fragment_main_student"
+        tools:layout="@layout/fragment_main_student">
+        <action
+            android:id="@+id/action_mainStudentFragment_to_requestNewFragment"
+            app:destination="@id/requestNewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginGuestFragment"
+        android:name="club.sigapp.safewalk.LoginGuestFragment"
+        android:label="fragment_login_guest"
+        tools:layout="@layout/fragment_login_guest" />
+    <fragment
+        android:id="@+id/requestNewFragment"
+        android:name="club.sigapp.safewalk.RequestNewFragment"
+        android:label="fragment_request_new"
+        tools:layout="@layout/fragment_request_new">
+        <action
+            android:id="@+id/action_requestNewFragment_to_studentRequestProcessingFragment"
+            app:destination="@id/studentRequestProcessingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentRequestProcessingFragment"
+        android:name="club.sigapp.safewalk.StudentRequestProcessingFragment"
+        android:label="fragment_student_request_processing"
+        tools:layout="@layout/fragment_student_request_processing" />
+    <fragment
+        android:id="@+id/mainPoliceFragment"
+        android:name="club.sigapp.safewalk.MainPoliceFragment"
+        android:label="fragment_main_police"
+        tools:layout="@layout/fragment_main_police">
+        <action
+            android:id="@+id/action_mainPoliceFragment_to_requestActiveFragment"
+            app:destination="@id/requestActiveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestActiveFragment"
+        android:name="club.sigapp.safewalk.RequestActiveFragment"
+        android:label="fragment_request_active"
+        tools:layout="@layout/fragment_request_active" />
+</navigation>
