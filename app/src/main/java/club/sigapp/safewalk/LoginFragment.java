@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,17 @@ public class LoginFragment extends Fragment
         btnLoginGuest = getView().findViewById(R.id.btnGuestLogin),
         btnLoginPolice = getView().findViewById(R.id.btnLogin2);
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainStudentFragment);
+            }
+        });
+
+        /*
         btnLogin.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainStudentFragment));
         btnLoginGuest.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_loginGuestFragment));
         btnLoginPolice.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainPoliceFragment));
+        */
     }
 }
