@@ -32,7 +32,7 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Purdue login"
-            android:inputType="textPassword" />
+            android:inputType="textNoSuggestions" />
 
         <EditText
             android:id="@+id/txtPassword"
@@ -42,7 +42,7 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="password"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -51,14 +51,6 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:text="Login" />
-
-        <Button
-            android:id="@+id/btnLogin2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:text="Login Police" />
 
         <Button
             android:id="@+id/btnGuestLogin"
