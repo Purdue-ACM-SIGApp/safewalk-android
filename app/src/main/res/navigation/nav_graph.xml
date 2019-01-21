@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/safeWalkInfoFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="club.sigapp.safewalk.LoginFragment"
@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_loginFragment_to_mainPoliceFragment"
             app:destination="@id/mainPoliceFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_safeWalkInfoFragment"
+            app:destination="@id/safeWalkInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainStudentFragment"
@@ -65,5 +68,9 @@
         android:id="@+id/safeWalkInfoFragment"
         android:name="club.sigapp.safewalk.SafeWalkInfoFragment"
         android:label="fragment_safe_walk_info"
-        tools:layout="@layout/fragment_safe_walk_info" />
+        tools:layout="@layout/fragment_safe_walk_info" >
+        <action
+            android:id="@+id/action_safeWalkInfoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
