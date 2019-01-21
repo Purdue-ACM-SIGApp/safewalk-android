@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="safewalk_description">SafeWalk is a security program offered by Purdue Police Department that offers 24/7 escort across Purdue grounds. Students that feel uneasy coming back from late studying can be escorted by a security patrol.</string>
+    <string name="safewalk_number">(765) 494-SAFE</string>
+    <string name="emergency_number">911</string>
+    <string name="about_app_safewalk">The SafeWalk app allows students to request SafeWalks from and to campus buildings and monitor whether the security patrol is on their way. Requires the Internet connection</string>
 </resources>
