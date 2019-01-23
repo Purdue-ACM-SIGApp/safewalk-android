@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberUtils;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -80,6 +81,7 @@ public class LoginFragment extends Fragment
     {
         super.onViewCreated(view, savedInstanceState);
 
+        // Login buttons clicks
         Button btnLogin = getView().findViewById(R.id.btnLogin),
                 btnLoginGuest = getView().findViewById(R.id.btnGuestLogin);
 
@@ -99,7 +101,7 @@ public class LoginFragment extends Fragment
     {
         // Get textViews
         TextView txtLogin = getView().findViewById(R.id.txtLogin),
-                txtPassword = getView().findViewById(R.id.txtPassword);
+                txtPassword = getView().findViewById(R.id.txtPassword), txtPhoneNumber = getView().findViewById(R.id.txtPhoneNumber);
 
         // Validate the credentials
         Integer loginType;
@@ -108,8 +110,13 @@ public class LoginFragment extends Fragment
             loginType = validateLogin(txtLogin.getText().toString(), txtPassword.getText().toString());
         } catch (Exception c)
         {
+            // Display error
             txtLogin.setError(c.getMessage());
             txtPassword.setText("");
+
+            // Clear up the phone number field
+            txtPhoneNumber.setVisibility(View.GONE);
+            txtPhoneNumber.setText("");
 
             return;
         }
@@ -117,6 +124,27 @@ public class LoginFragment extends Fragment
         // Log in as a student
         if (0 == loginType)
         {
+            String phoneNumber;
+
+            // Request a phone number
+            if (txtPhoneNumber.getVisibility() != View.VISIBLE)
+            {
+                txtPhoneNumber.setVisibility(View.VISIBLE);
+
+                return;
+            } else
+            {
+                // Try to receive and validate the phone number
+                phoneNumber = txtPhoneNumber.getText().toString();
+
+                if (phoneNumber.isEmpty() || !PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber))
+                {
+                    // Display error
+                    txtPhoneNumber.setError("Invalid phone number");
+                    return;
+                }
+            }
+
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainStudentFragment);
         }
         // Log in as police

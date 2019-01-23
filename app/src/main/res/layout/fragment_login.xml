@@ -47,6 +47,17 @@
             android:hint="password"
             android:inputType="textPassword" />
 
+        <EditText
+            android:id="@+id/txtPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="phone number"
+            android:inputType="phone"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
