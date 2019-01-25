@@ -31,7 +31,7 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Full Name"
-            android:inputType="textPassword" />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btnGuestLogin"
