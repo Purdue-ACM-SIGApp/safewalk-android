@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.telephony.PhoneNumberUtils;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -133,10 +132,13 @@ public class LoginFragment extends Fragment
                 return;
             } else
             {
-                // Try to receive and validate the phone number
-                phoneNumber = txtPhoneNumber.getText().toString();
+                try
+                {
+                    // Try to receive and validate the phone number
+                    phoneNumber = txtPhoneNumber.getText().toString();
 
-                if (phoneNumber.isEmpty() || !PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber))
+                    Login.validatePhoneNumber(phoneNumber);
+                } catch (Exception c)
                 {
                     // Display error
                     txtPhoneNumber.setError("Invalid phone number");

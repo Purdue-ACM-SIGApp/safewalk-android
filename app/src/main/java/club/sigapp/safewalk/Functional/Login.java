@@ -1,5 +1,7 @@
 package club.sigapp.safewalk.Functional;
 
+import android.telephony.PhoneNumberUtils;
+
 import java.util.HashMap;
 
 public class Login
@@ -28,5 +30,11 @@ public class Login
         }
 
         throw new Exception("Login not found");
+    }
+
+    public static void validatePhoneNumber(String xPhoneNumber) throws Exception
+    {
+       if(xPhoneNumber.isEmpty() || !PhoneNumberUtils.isGlobalPhoneNumber(xPhoneNumber))
+           throw new Exception("Invalid phone number");
     }
 }
