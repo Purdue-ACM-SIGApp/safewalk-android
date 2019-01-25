@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.HashMap;
-
 import androidx.navigation.Navigation;
+import club.sigapp.safewalk.Functional.Login;
 
 
 public class LoginFragment extends Fragment
@@ -51,7 +50,7 @@ public class LoginFragment extends Fragment
         btnLoginGuest.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_loginGuestFragment));
     }
 
-    // Main function for login
+    // Process login
     private void performLogin(View view)
     {
         // Get textViews
@@ -62,9 +61,10 @@ public class LoginFragment extends Fragment
         Integer loginType;
         try
         {
-            loginType = validateLogin(txtLogin.getText().toString(), txtPassword.getText().toString());
+            loginType = Login.requestServerLogin(txtLogin.getText().toString(), txtPassword.getText().toString());
         } catch (Exception c)
         {
+            // Display error
             txtLogin.setError(c.getMessage());
             txtPassword.setText("");
 
@@ -81,25 +81,5 @@ public class LoginFragment extends Fragment
         {
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainPoliceFragment);
         }
-    }
-
-    // Validate login by sending a request to the server
-    // Return the type of login, if successful
-    // Throw an error if the login was not found
-    private Integer validateLogin(String xLogin, String xPassword) throws Exception
-    {
-        // Todo: replace with server login request
-        String[] mockLogins = {"student", "police"};
-        HashMap<String, Integer> mockTypes = new HashMap<>();
-        mockTypes.put("student", 0);
-        mockTypes.put("police", 1);
-
-        for (String login : mockLogins)
-        {
-            if (xLogin.equals(login))
-                return mockTypes.get(login);
-        }
-
-        throw new Exception("Login not found");
     }
 }
