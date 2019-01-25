@@ -32,6 +32,26 @@ public class Login
         throw new Exception("Login not found");
     }
 
+    public static void requestGuestLogin(String xLastName, String xFirstName, String xPhoneNumber) throws Exception
+    {
+        try
+        {
+            // Validate the last name
+            if (xLastName.isEmpty())
+                throw new Exception("Empty last name");
+
+            // Validate the first name
+            if (xFirstName.isEmpty())
+                throw new Exception("Empty first name");
+
+            // Validate the phone number
+            validatePhoneNumber(xPhoneNumber);
+        } catch (Exception c)
+        {
+            throw c;
+        }
+    }
+
     public static void validatePhoneNumber(String xPhoneNumber) throws Exception
     {
        if(xPhoneNumber.isEmpty() || !PhoneNumberUtils.isGlobalPhoneNumber(xPhoneNumber))
